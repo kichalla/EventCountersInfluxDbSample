@@ -13,7 +13,8 @@ namespace WebApp.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            SampleEventSource.Log.Foo();
+            SampleEventSource.Log.CallToGetValues();
+
             return new string[] { "value1", "value2" };
         }
 

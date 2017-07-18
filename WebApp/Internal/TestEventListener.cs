@@ -13,6 +13,8 @@ namespace WebApp.Internal
 
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
+            Console.WriteLine("Event written: " + eventData.EventName);
+
             if (eventData.EventName != "EventCounters")
             {
                 return;
@@ -25,7 +27,7 @@ namespace WebApp.Internal
                 {
                     var eventCounterPayload = new EventCounterPayload(payload);
 
-                    // Push to InfluxDb
+                    // ToDo: Push to InfluxDb
                 }
             }
         }
