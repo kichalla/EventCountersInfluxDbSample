@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using WebApp.Internal;
 
 namespace WebApp
 {
@@ -34,9 +30,8 @@ namespace WebApp
 
             var eventSourceArgs = new Dictionary<string, string>();
             eventSourceArgs.Add("EventCounterIntervalSec", "1");
-
-            var listener = new TestEventListener();
-            listener.EnableEvents(TestEventSource.Log, EventLevel.LogAlways, EventKeywords.None, eventSourceArgs);
+            var listener = new SampleEventListener();
+            listener.EnableEvents(SampleEventSource.Log, EventLevel.LogAlways, EventKeywords.None, eventSourceArgs);
         }
     }
 }

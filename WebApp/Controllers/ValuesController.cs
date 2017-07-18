@@ -13,7 +13,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            TestEventSource.Log.Foo();
+            SampleEventSource.Log.Foo();
             return new string[] { "value1", "value2" };
         }
 
