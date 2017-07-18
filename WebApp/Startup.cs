@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,12 @@ namespace WebApp
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseMvc();
+
+            var eventSourceArgs = new Dictionary<string, string>();
+            eventSourceArgs.Add("EventCounterIntervalSec", "1");
+
+            var listener = new TestEventListener();
+            listener.EnableEvents(TestEventSource.Log, EventLevel.LogAlways, EventKeywords.None, eventSourceArgs);
         }
     }
 }
